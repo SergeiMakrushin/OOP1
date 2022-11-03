@@ -2,11 +2,11 @@ package transport;
 
 import java.time.LocalDate;
 
-public class Car {
+public class Car extends Transport {
 
     public static class Toy {
         private int e;
-       private int b;
+        private int b;
 
 
         public Toy(int e, int b) {
@@ -67,9 +67,9 @@ public class Car {
         LocalDate b;
 
         public Insurance(String insurancePeriod, double costInsurance, String numberInsurance) {
-          //  this.insurancePeriod = insurancePeriod;
+
             if (this.insurancePeriod == null || this.insurancePeriod.isBlank() || this.insurancePeriod.length() != 10) {
-                System.out.println("Заполните данные в формате гггг-мм-дд  с тире");
+                this.insurancePeriod = "Заполните данные в формате гггг-мм-дд  с тире";
             } else if (Character.isDefined(this.insurancePeriod.charAt(4))
                     || Character.isDefined(this.insurancePeriod.charAt(7))
                     || Character.isDigit(this.insurancePeriod.charAt(0))
@@ -82,7 +82,7 @@ public class Car {
                     || Character.isDigit(this.insurancePeriod.charAt(9))) {
                 LocalDate b = LocalDate.parse(this.insurancePeriod);
                 b.isBefore(LocalDate.now());
-                System.out.println("Поменяйте страховку");
+                this.insurancePeriod = "Поменяйте страховку";
             }
             if (costInsurance < 0) {
                 costInsurance = Math.abs(costInsurance);
@@ -109,12 +109,12 @@ public class Car {
         }
     }
 
-    private final String brand;
-    private final String model;
+    //private final String brand;
+    // private final String model;
     private float engineVolume;
-    private String color;
-    private final int productionYear;
-    private final String productionCountry;
+    //private String color;
+    // private final int productionYear;
+    // private final String productionCountry;
     private String transmission;
     private final String body;
     private final int numberSeats;
@@ -125,20 +125,10 @@ public class Car {
     private Toy toy;
 
 
-
-
     public Car(String brand, String model, int productionYear, String productionCountry, String color,
-               float engineVolume,
-               String transmission, String registrationNumber, String body, int numberSeats, String tyres) {
-        if (brand == null || model == null || productionCountry == null) {
-            this.brand = "default";
-            this.model = "default";
-            this.productionCountry = "default";
-        } else {
-            this.brand = brand;
-            this.model = model;
-            this.productionCountry = productionCountry;
-        }
+               float engineVolume, String transmission, String registrationNumber, String body, int numberSeats, String tyres, String fuel) {
+        super(brand,model,productionYear,productionCountry, fuel);
+        //super(brand, model, productionYear, productionCountry, color);
 
         if (Float.compare(engineVolume, 0) == 0) {
 
@@ -146,17 +136,7 @@ public class Car {
         } else {
             this.engineVolume = engineVolume;
         }
-        if (color == null || color.isBlank()) {
-            this.color = "белый";
-        } else {
-            this.color = color;
-        }
 
-        if (productionYear == 0) {
-            this.productionYear = 2000;
-        } else {
-            this.productionYear = productionYear;
-        }
         if (transmission != null || !transmission.isEmpty() || !transmission.isBlank()) {
             this.transmission = transmission;
         } else {
@@ -172,7 +152,6 @@ public class Car {
         if (registrationNumber != null || registrationNumber.isBlank()) {
 
             this.registrationNumber = registrationNumber;
-
         } else {
             this.registrationNumber = "Неправильный номер";
         }
@@ -184,6 +163,7 @@ public class Car {
         } else {
             this.tyres = ": Информация не указана";
         }
+        this.color = color;
     }
 
     public Key getKey() {
@@ -196,6 +176,7 @@ public class Car {
             this.key = key;
         }
     }
+
     public Toy getToy() {
         return toy;
     }
@@ -203,6 +184,7 @@ public class Car {
     public void setToy(Toy toy) {
         this.toy = toy;
     }
+
     public void setInsurance(Insurance insurance) {
         this.insurance = insurance;
     }
@@ -211,13 +193,6 @@ public class Car {
         return insurance;
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
 
     public float getEngineVolume() {
         return engineVolume;
@@ -227,21 +202,6 @@ public class Car {
         this.engineVolume = engineVolume;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public int getProductionYear() {
-        return productionYear;
-    }
-
-    public String getProductionCountry() {
-        return productionCountry;
-    }
 
     public String getBody() {
         return body;
@@ -277,19 +237,20 @@ public class Car {
 
     public void Print() {
         System.out.println(
-                brand + " "
-                        + model + ", "
-                        + productionYear
+                super.getBrand() + " "
+                        + super.getModel() + ", "
+                        + super.getProductionYear()
                         + " год выпуска, сборка в "
-                        + productionCountry
+                        + super.getProductionCountry()
                         + " , цвет "
-                        + color
+                        + super.getColor()
                         + " , объём двигателя "
                         + engineVolume + " л, коробка передач "
                         + transmission + ", тип кузова "
                         + body + ", регистрационный номер: " + registrationNumber + ", количество мест "
                         + numberSeats + ", шины "
-                        + tyres + ".");
+                        + tyres +", вид топлива: "
+                        +super.getFuel() +".");
     }
 
     public void Keys() {
@@ -304,6 +265,18 @@ public class Car {
         System.out.println(getInsurance());
 
     }
+    public void refill() {
+        String a = "дизельное топливо";
+                String b = "бензин";
+               String c = "электричество";
+               if (getFuel().equalsIgnoreCase(a) != true
+                        || getFuel().equalsIgnoreCase(b) != true
+                        || getFuel().equalsIgnoreCase(c) != true) {
+                    setFuel("укажите бензин, электричество или дизельное топливо");
+                }
+
+    }
+
 
     public void changeTyres() {
         String a = "летние";
