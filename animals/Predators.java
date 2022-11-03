@@ -50,7 +50,7 @@ public class Predators extends Mammals {
 
     @Override
     public boolean equals(Object o) {
-        //if (this == o) return true; String nikname, int age, String livingEnvironment, int speedMovement,
+
         if (o == null || getClass() != o.getClass()) return false;
         Predators predators = (Predators) o;
         return getNikname().equals(predators.getNikname())&&

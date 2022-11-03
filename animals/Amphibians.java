@@ -41,7 +41,7 @@ public class Amphibians extends Animals {
 
     @Override
     public boolean equals(Object o) {
-        //if (this == o) return true; String nikname, int age, String livingEnvironment
+
         if (o == null || getClass() != o.getClass()) return false;
         Amphibians that = (Amphibians) o;
         return getNikname().equals(that.getNikname()) &&

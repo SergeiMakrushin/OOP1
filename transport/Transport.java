@@ -41,7 +41,9 @@ public abstract class Transport {
 
         if (fuel == null || fuel.isBlank()) {
             this.fuel = "не указано";
-        } else{ this.fuel = fuel;}
+        } else {
+            this.fuel = fuel;
+        }
 
 
     }
@@ -50,7 +52,7 @@ public abstract class Transport {
         return fuel;
     }
 
-     public void setFuel(String fuel) {
+    public void setFuel(String fuel) {
 
         this.fuel = fuel;
     }
@@ -60,9 +62,10 @@ public abstract class Transport {
     }
 
     public void setBrand(String brand) {
-            this.brand = brand;
+        this.brand = brand;
     }
-    //if (brand != null && !brand.isBlank()) {
+
+
     public String getModel() {
         return model;
     }
@@ -76,11 +79,7 @@ public abstract class Transport {
     public int getProductionYear() {
         return productionYear;
     }
-//if (productionYear == 0) {
-//            this.productionYear = 2000;
-//        } else {
-//            this.productionYear = productionYear;
-//        }
+
 
     public String getProductionCountry() {
         return productionCountry;

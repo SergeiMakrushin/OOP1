@@ -56,9 +56,7 @@ public class Car extends Transport {
 
     }
 
-    //- Срок действия страховки
-//- Стоимость страховки
-//- Номер страховки
+
     public static class Insurance {
         private String insurancePeriod;
         private double costInsurance;
@@ -109,12 +107,9 @@ public class Car extends Transport {
         }
     }
 
-    //private final String brand;
-    // private final String model;
+
     private float engineVolume;
-    //private String color;
-    // private final int productionYear;
-    // private final String productionCountry;
+
     private String transmission;
     private final String body;
     private final int numberSeats;
@@ -127,7 +122,7 @@ public class Car extends Transport {
 
     public Car(String brand, String model, int productionYear, String productionCountry, String color,
                float engineVolume, String transmission, String registrationNumber, String body, int numberSeats, String tyres, String fuel) {
-        super(brand,model,productionYear,productionCountry, fuel);
+        super(brand, model, productionYear, productionCountry, fuel);
         //super(brand, model, productionYear, productionCountry, color);
 
         if (Float.compare(engineVolume, 0) == 0) {
@@ -249,31 +244,29 @@ public class Car extends Transport {
                         + transmission + ", тип кузова "
                         + body + ", регистрационный номер: " + registrationNumber + ", количество мест "
                         + numberSeats + ", шины "
-                        + tyres +", вид топлива: "
-                        +super.getFuel() +".");
+                        + tyres + ", вид топлива: "
+                        + super.getFuel() + ".");
     }
 
     public void Keys() {
         System.out.println(getKey());
     }
 
-    // public Key(String remoteEngineStart, String keyFree) {
-//            this.remoteEngineStart = remoteEngineStart;
-//            this.keyFree = keyFree;
-//        }
+
     public void Kprint() {
         System.out.println(getInsurance());
 
     }
+
     public void refill() {
         String a = "дизельное топливо";
-                String b = "бензин";
-               String c = "электричество";
-               if (getFuel().equalsIgnoreCase(a) != true
-                        || getFuel().equalsIgnoreCase(b) != true
-                        || getFuel().equalsIgnoreCase(c) != true) {
-                    setFuel("укажите бензин, электричество или дизельное топливо");
-                }
+        String b = "бензин";
+        String c = "электричество";
+        if (getFuel().equalsIgnoreCase(a) != true
+                || getFuel().equalsIgnoreCase(b) != true
+                || getFuel().equalsIgnoreCase(c) != true) {
+            setFuel("укажите бензин, электричество или дизельное топливо");
+        }
 
     }
 

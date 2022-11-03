@@ -47,9 +47,9 @@ public class Flying extends Birds {
         //if (this == o) return true; String nikname, int age, String livingEnvironment, String typeMovement
         if (o == null || getClass() != o.getClass()) return false;
         Flying that = (Flying) o;
-        return getNikname().equals(that.getNikname())&&
-                this.getAge()==getAge()&&
-                livingEnvironment.equals(that.livingEnvironment)&&
+        return getNikname().equals(that.getNikname()) &&
+                this.getAge() == getAge() &&
+                livingEnvironment.equals(that.livingEnvironment) &&
                 typeMovement.equals(that.typeMovement);
     }
 

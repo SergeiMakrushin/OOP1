@@ -48,7 +48,7 @@ public class Flightless extends Birds {
 
     @Override
     public boolean equals(Object o) {
-        //if (this == o) return true; String nikname, int age, String livingEnvironment, String typeMovement
+
         if (o == null || getClass() != o.getClass()) return false;
         Flightless that = (Flightless) o;
         return getNikname().equals(that.getNikname())&&

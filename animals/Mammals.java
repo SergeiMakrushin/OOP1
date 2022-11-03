@@ -33,10 +33,6 @@ public abstract class Mammals extends Animals {
 
     public abstract  void walk();
 
-   // @Override
-    //public void eat() {
-
-    //}
 
 
 }

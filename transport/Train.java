@@ -1,11 +1,7 @@
 package transport;
 
 public class Train extends Transport {
-    //- Цена поездки
-    //- Время поездки
-    //- Название станции отбытия
-    //- Конечная остановка
-    //- Количество вагонов
+
     int priceTrip;
     int timeTrip;
     String nameDepartureStation;
@@ -13,8 +9,8 @@ public class Train extends Transport {
     int numberOfWagons;
 
 
-    public Train(String brand, String model, int productionYear, String productionCountry,  int maxMovementSpeed,
-                 String nameDepartureStation, String finalStop, int priceTrip, int numberOfWagons,String fuel) {
+    public Train(String brand, String model, int productionYear, String productionCountry, int maxMovementSpeed,
+                 String nameDepartureStation, String finalStop, int priceTrip, int numberOfWagons, String fuel) {
         super(brand, model, productionYear, productionCountry, fuel);
         setPriceTrip(priceTrip);
         setNameDepartureStation(nameDepartureStation);
@@ -31,13 +27,6 @@ public class Train extends Transport {
         this.priceTrip = Math.abs(priceTrip);
     }
 
-    // public int getTimeTrip() {
-    //    return timeTrip;
-    // }
-
-    // public void setTimeTrip(int timeTrip) {
-    //   this.timeTrip = Math.abs(timeTrip);
-    //}
 
     public String getNameDepartureStation() {
         return nameDepartureStation;
@@ -74,12 +63,11 @@ public class Train extends Transport {
     @Override
     public void refill() {
         String a = "дизельное топливо";
-       if (getFuel().equalsIgnoreCase(a)!=true) {
-           this.setFuel("дизельное топливо");
+        if (getFuel().equalsIgnoreCase(a) != true) {
+            this.setFuel("дизельное топливо");
         }
 
     }
-//
 
 
     @Override
@@ -93,7 +81,7 @@ public class Train extends Transport {
                 " и следует до станции " + finalStop +
                 ". Цена поездки - " + priceTrip +
                 ", в поезде " + numberOfWagons +
-                " вагонов, вид топлива:" +super.getFuel();
+                " вагонов, вид топлива:" + super.getFuel();
     }
 
 }

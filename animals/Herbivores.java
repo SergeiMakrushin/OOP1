@@ -50,12 +50,12 @@ public class Herbivores extends Mammals {
 
     @Override
     public boolean equals(Object o) {
-        // if (this == o) return true;(nikname, age, livingEnvironment, speedMovement)
+
         if (o == null || getClass() != o.getClass()) return false;
         Herbivores that = (Herbivores) o;
         return getNikname().equals(that.getNikname()) &&
                 this.getAge() == getAge() &&
-                this.speedMovement==speedMovement&&
+                this.speedMovement == speedMovement &&
                 livingEnvironment.equals(that.livingEnvironment) &&
                 typeFood.equals(that.typeFood);
     }
