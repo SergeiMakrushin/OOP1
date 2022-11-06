@@ -1,36 +1,24 @@
 package transport;
 
 public class Bus extends Transport {
-    int m;
-
 
     public Bus(String brand, String model, int productionYear, String productionCountry, String color, int maxMovementSpeed, String fuel) {
-        super(brand, model, productionYear, productionCountry, fuel);
-        this.color = color;
-        this.maxMovementSpeed = maxMovementSpeed;
+        super(brand, model, productionYear, productionCountry, color, maxMovementSpeed, fuel);
 
     }
 
     public void refill() {
-        m++;
-                String a = "дизельное топливо";
-               String b = "бензин";
-                if (getFuel().equalsIgnoreCase(a) == true
-                       || getFuel().equalsIgnoreCase(b) == true
-                      || getFuel().equalsIgnoreCase(a) != true
-                       || getFuel().equalsIgnoreCase(b) != true) {
-                    if (m % 2 == 0) {
-                        setFuel("бензин");
-                    } else {
-                        setFuel("дизельное топливо");
-                    }
-                }
+        String a = "дизельное топливо";
+        String b = "бензин";
+        if (getFuel().equalsIgnoreCase(a) == true) {
+            System.out.println("Заправьте бензин на заправке");
+        } else if (getFuel().equalsIgnoreCase(b) == true) {
+            System.out.println("Заправьте дизельное топливо на заправке");
+        } else {
+            System.out.println("укажите: бензин или дизельное топливо");
+        }
 
     }
-        //
-        //System.out.println("Заправьте бензином или дизилем");
-
-
 
     @Override
     public String toString() {
@@ -40,7 +28,7 @@ public class Bus extends Transport {
                 ", страна производства " + super.getProductionCountry() +
                 ", цвет " + super.getColor() +
                 ", максимальная скорость " + super.getMaxMovementSpeed() +
-                " км/ч."+ ", вид топлива: "+ super.getFuel();
+                " км/ч." + ", вид топлива: " + super.getFuel();
 
     }
 }

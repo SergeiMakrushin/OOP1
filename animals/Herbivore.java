@@ -2,10 +2,10 @@ package animals;
 
 import java.util.Objects;
 
-public class Herbivores extends Mammals {
-    protected final String typeFood;
+public class Herbivore extends Mammal {
+    private final String typeFood;
 
-    public Herbivores(String nikname, int age, String livingEnvironment, int speedMovement, String typeFood) {
+    public Herbivore(String nikname, int age, String livingEnvironment, int speedMovement, String typeFood) {
         super(nikname, age, livingEnvironment, speedMovement);
         if (typeFood == null || typeFood.isBlank()) {
             this.typeFood = "Некорректное значение";
@@ -22,29 +22,37 @@ public class Herbivores extends Mammals {
 
     @Override
     public void eat() {
+        System.out.println("питаються растительной пищей");
 
     }
 
     @Override
     public void go() {
+        System.out.println("бегают и ходят");
 
     }
 
     @Override
     public void walk() {
-
+        System.out.println("гуляют на полях");
     }
 
     public static void graze() {
+        System.out.println("пасуться на лугах и полях");
+    }
+
+    @Override
+    public void sleep() {
+        System.out.println("спят ночью");
     }
 
     @Override
     public String toString() {
         return "Кличка " + getNikname() +
                 ", возраст " + getAge() +
-                ", среда обитания " + livingEnvironment +
+                ", среда обитания " + getLivingEnvironment() +
                 ", скорость передвижения "
-                + speedMovement + "км/ч, тип пищи "
+                + getSpeedMovement() + "км/ч, тип пищи "
                 + typeFood + ".";
     }
 
@@ -52,11 +60,11 @@ public class Herbivores extends Mammals {
     public boolean equals(Object o) {
 
         if (o == null || getClass() != o.getClass()) return false;
-        Herbivores that = (Herbivores) o;
+        Herbivore that = (Herbivore) o;
         return getNikname().equals(that.getNikname()) &&
                 this.getAge() == getAge() &&
-                this.speedMovement == speedMovement &&
-                livingEnvironment.equals(that.livingEnvironment) &&
+                this.getSpeedMovement() == getSpeedMovement() &&
+                getLivingEnvironment().equals(that.getLivingEnvironment()) &&
                 typeFood.equals(that.typeFood);
     }
 

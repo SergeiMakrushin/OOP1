@@ -4,32 +4,6 @@ import java.time.LocalDate;
 
 public class Car extends Transport {
 
-    public static class Toy {
-        private int e;
-        private int b;
-
-
-        public Toy(int e, int b) {
-            this.e = e;
-            this.b = b;
-        }
-
-        public int getE() {
-            return e;
-        }
-
-        public void setE(int e) {
-            this.e = e;
-        }
-
-        public int getB() {
-            return b;
-        }
-
-        public void setB(int b) {
-            this.b = b;
-        }
-    }
 
     public static class Key {
         private String remoteEngineStart;
@@ -61,8 +35,8 @@ public class Car extends Transport {
         private String insurancePeriod;
         private double costInsurance;
         private String numberInsurance;
-        double s = Math.pow(10, 3);
-        LocalDate b;
+        private double s = Math.pow(10, 3);
+        private LocalDate b;
 
         public Insurance(String insurancePeriod, double costInsurance, String numberInsurance) {
 
@@ -114,16 +88,15 @@ public class Car extends Transport {
     private final String body;
     private final int numberSeats;
     private String tyres;
-    String registrationNumber;
-    public Key key;
-    public Insurance insurance;
-    private Toy toy;
+    private String registrationNumber;
+    private Key key;
+    private Insurance insurance;
 
 
     public Car(String brand, String model, int productionYear, String productionCountry, String color,
                float engineVolume, String transmission, String registrationNumber, String body, int numberSeats, String tyres, String fuel) {
-        super(brand, model, productionYear, productionCountry, fuel);
-        //super(brand, model, productionYear, productionCountry, color);
+        super(brand, model, productionYear, productionCountry, color, fuel);
+
 
         if (Float.compare(engineVolume, 0) == 0) {
 
@@ -158,7 +131,7 @@ public class Car extends Transport {
         } else {
             this.tyres = ": Информация не указана";
         }
-        this.color = color;
+
     }
 
     public Key getKey() {
@@ -172,13 +145,6 @@ public class Car extends Transport {
         }
     }
 
-    public Toy getToy() {
-        return toy;
-    }
-
-    public void setToy(Toy toy) {
-        this.toy = toy;
-    }
 
     public void setInsurance(Insurance insurance) {
         this.insurance = insurance;
@@ -230,7 +196,7 @@ public class Car extends Transport {
         this.tyres = tires;
     }
 
-    public void Print() {
+    public void print() {
         System.out.println(
                 super.getBrand() + " "
                         + super.getModel() + ", "
@@ -248,12 +214,12 @@ public class Car extends Transport {
                         + super.getFuel() + ".");
     }
 
-    public void Keys() {
+    public void keys() {
         System.out.println(getKey());
     }
 
 
-    public void Kprint() {
+    public void kprint() {
         System.out.println(getInsurance());
 
     }
@@ -262,10 +228,14 @@ public class Car extends Transport {
         String a = "дизельное топливо";
         String b = "бензин";
         String c = "электричество";
-        if (getFuel().equalsIgnoreCase(a) != true
-                || getFuel().equalsIgnoreCase(b) != true
-                || getFuel().equalsIgnoreCase(c) != true) {
-            setFuel("укажите бензин, электричество или дизельное топливо");
+        if (getFuel().equalsIgnoreCase(a) == true) {
+            System.out.println("Заправьте дизельное топливо на заправке");
+        } else if (getFuel().equalsIgnoreCase(b) == true) {
+            System.out.println("Заправьте бензин на заправке");
+        } else if (getFuel().equalsIgnoreCase(c) == true) {
+            System.out.println("Зарядите на электро парковке");
+        } else {
+            System.out.println("укажите: бензин, электричество или дизельное топливо");
         }
 
     }

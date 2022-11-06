@@ -7,29 +7,28 @@ public abstract class Transport {
     private int productionYear;
     private String productionCountry;
 
-    protected String fuel;
+    private String fuel;
 
+    private String color;
 
-    public Transport(int maxMovementSpeed) {
-        setMaxMovementSpeed(maxMovementSpeed);
-    }
+    private int maxMovementSpeed;
 
-    public Transport(String color) {
-        setColor(color);
-    }
-
-    protected String color;
-
-    protected int maxMovementSpeed;
-
-    public Transport(String brand, String model, int productionYear, String productionCountry, String fuel) {
-        if (brand == null || model == null || productionCountry == null || brand.isBlank() || model.isBlank() || productionCountry.isBlank()) {
+    public Transport(String brand, String model, int productionYear, String productionCountry, String color, String fuel) {
+        if (brand == null || brand.isBlank()) {
             this.brand = "default";
-            this.model = "default";
-            this.productionCountry = "default";
         } else {
             this.brand = brand;
+        }
+
+        if (model == null || model.isBlank()) {
+            this.model = "default";
+        } else {
             this.model = model;
+        }
+
+        if (productionCountry == null || productionCountry.isBlank()) {
+            this.productionCountry = "default";
+        } else {
             this.productionCountry = productionCountry;
         }
 
@@ -44,9 +43,80 @@ public abstract class Transport {
         } else {
             this.fuel = fuel;
         }
-
-
+        setColor(color);
     }
+
+
+    public Transport(String brand, String model, int productionYear, String productionCountry, int maxMovementSpeed, String fuel) {
+        setMaxMovementSpeed(maxMovementSpeed);
+        if (brand == null || brand.isBlank()) {
+            this.brand = "default";
+        } else {
+            this.brand = brand;
+        }
+
+        if (model == null || model.isBlank()) {
+            this.model = "default";
+        } else {
+            this.model = model;
+        }
+
+
+        if (productionCountry == null || productionCountry.isBlank()) {
+            this.productionCountry = "default";
+        } else {
+            this.productionCountry = productionCountry;
+        }
+
+        if (productionYear == 0) {
+            this.productionYear = 2000;
+        } else {
+            this.productionYear = Math.abs(productionYear);
+        }
+
+        if (fuel == null || fuel.isBlank()) {
+            this.fuel = "не указано";
+        } else {
+            this.fuel = fuel;
+        }
+    }
+
+    public Transport(String brand, String model, int productionYear, String productionCountry, String color, int maxMovementSpeed, String fuel) {
+        setMaxMovementSpeed(maxMovementSpeed);
+        if (brand == null || brand.isBlank()) {
+            this.brand = "default";
+        } else {
+            this.brand = brand;
+        }
+
+
+        if (model == null || model.isBlank()) {
+            this.model = "default";
+        } else {
+            this.model = model;
+        }
+
+
+        if (productionCountry == null || productionCountry.isBlank()) {
+            this.productionCountry = "default";
+        } else {
+            this.productionCountry = productionCountry;
+        }
+
+        if (productionYear == 0) {
+            this.productionYear = 2000;
+        } else {
+            this.productionYear = Math.abs(productionYear);
+        }
+
+        if (fuel == null || fuel.isBlank()) {
+            this.fuel = "не указано";
+        } else {
+            this.fuel = fuel;
+        }
+        setColor(color);
+    }
+
 
     public String getFuel() {
         return fuel;

@@ -1,10 +1,12 @@
 package animals;
 
-public abstract class Animals {
+import java.util.Objects;
+
+public abstract class Animal {
     private String nikname;
     private int age;
 
-    public Animals(String nikname, int age) {
+    public Animal(String nikname, int age) {
         setNikname(nikname);
 
         setAge(age);
@@ -29,14 +31,22 @@ public abstract class Animals {
     }
 
 
-
-    public static void sleep() {
-    }
+    public abstract void sleep();
 
     public abstract void eat();
 
     public abstract void go();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Animal animal = (Animal) o;
+        return age == animal.age && nikname.equals(animal.nikname);
+    }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(nikname, age);
+    }
 }

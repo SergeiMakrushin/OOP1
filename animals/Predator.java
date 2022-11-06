@@ -2,17 +2,16 @@ package animals;
 
 import java.util.Objects;
 
-public class Predators extends Mammals {
-    protected final String typeFood;
+public class Predator extends Mammal {
+    private final String typeFood;
 
-    public Predators(String nikname, int age, String livingEnvironment, int speedMovement, String typeFood) {
+    public Predator(String nikname, int age, String livingEnvironment, int speedMovement, String typeFood) {
         super(nikname, age, livingEnvironment, speedMovement);
         if (typeFood == null || typeFood.isBlank()) {
             this.typeFood = "Некорректное значение";
         } else {
             this.typeFood = typeFood;
         }
-
     }
 
     public String getTypeFood() {
@@ -22,29 +21,38 @@ public class Predators extends Mammals {
 
     @Override
     public void eat() {
+        System.out.println("едят других животных");
 
     }
 
     @Override
     public void go() {
+        System.out.println("ходят на 4 ногах");
 
     }
 
     @Override
     public void walk() {
+        System.out.println("гуляют в лесу");
 
     }
 
     public static void hunt() {
+        System.out.println("охотяться ночью");
+    }
+
+    @Override
+    public void sleep() {
+        System.out.println("спят днём");
     }
 
     @Override
     public String toString() {
         return "Кличка " + getNikname() +
                 ", возраст " + getAge() +
-                ", среда обитания " + livingEnvironment +
+                ", среда обитания " + getLivingEnvironment() +
                 ", скорость передвижения "
-                + speedMovement + "км/ч, тип пищи "
+                + getLivingEnvironment() + "км/ч, тип пищи "
                 + typeFood + ".";
     }
 
@@ -52,11 +60,11 @@ public class Predators extends Mammals {
     public boolean equals(Object o) {
 
         if (o == null || getClass() != o.getClass()) return false;
-        Predators predators = (Predators) o;
-        return getNikname().equals(predators.getNikname())&&
+        Predator predators = (Predator) o;
+        return getNikname().equals(predators.getNikname()) &&
                 this.getAge() == getAge() &&
-                this.speedMovement==speedMovement&&
-                livingEnvironment.equals(predators.livingEnvironment)&&
+                this.getSpeedMovement() == getSpeedMovement() &&
+                getLivingEnvironment().equals(predators.getLivingEnvironment()) &&
                 typeFood.equals(predators.typeFood);
     }
 

@@ -3,7 +3,6 @@ import transport.Bus;
 import transport.Car;
 import transport.Car.Insurance;
 import transport.Car.Key;
-import transport.Car.Toy;
 import transport.Train;
 
 public class Main {
@@ -12,7 +11,7 @@ public class Main {
 
         Key king = new Key("да", "нет");
         Insurance valeo = new Insurance("2022-09-12", 5, "tyrf");
-        Toy toy = new Toy(42, 54);
+
 
         Car lada = new Car(
                 "Lada",
@@ -85,7 +84,7 @@ public class Main {
         // отходит от Ленинградского вокзала и следует до станции Ленинград-Пассажирский. Цена поездки - 1700 рублей, в поезде 8 вагонов.
         Train swallow = new Train("Ласточка", "B-901", 2011, "России", 301,
                 "Белорусского вокзала", "Минск-Пассажирский", 3500, 35, "дизельное топливо");
-        Train lebingrad = new Train("Ленинград", "D-125", 2019, "России", 270,
+        Train leningrad = new Train("Ленинград", "D-125", 2019, "России", 270,
                 "Ленинградского вокзала", "Ленинград-Пассажирский", 1700, 8, "бензин");
 
 
@@ -93,59 +92,59 @@ public class Main {
         Bus nefaz = new Bus("НефАЗ", "5299", 2005, "Россия", "синий", 70, "");
         Bus maz = new Bus("Маз", "215", 2017, "Белорусь", "белый", 70, "fsd");
 
+
         hyundai.changeTyres();
         kia.changeTyres();
         hyundai.setRegistrationNumber("gfrg");
         hyundai.number();
-        lada.Print();
-        audi.Print();
-        bmv.Print();
-        kia.Print();
-        hyundai.Print();
+        lada.print();
+        audi.print();
+        bmv.print();
+        kia.print();
+        hyundai.print();
         hyundai.setKey(king);
         hyundai.setInsurance(valeo);
-        hyundai.setToy(toy);
 
-        System.out.println("hyundai.key = " + hyundai.key);
-        System.out.println("hyundai.insurance = " + hyundai.insurance);
+
+        System.out.println("hyundai.key = " + hyundai.getKey());
+        System.out.println("hyundai.insurance = " + hyundai.getInsurance());
         System.out.println("hyundai.getInsurance() = " + hyundai.getInsurance().getCostInsurance());
-        System.out.println("hyundai.getToy() = " + hyundai.getToy());
-        System.out.println("toy = " + toy);
-        System.out.println("toy.getB() = " + toy.getB());
+
         System.out.println("valeo.getCostInsurance() = " + valeo.getCostInsurance());
         System.out.println("swallow = " + swallow);
-        System.out.println("lebingrad = " + lebingrad);
+        System.out.println("lebingrad = " + leningrad);
         System.out.println("liaz = " + liaz);
         System.out.println("nefaz = " + nefaz);
         System.out.println("maz = " + maz);
-        lebingrad.refill();
-        System.out.println("lebingrad = " + lebingrad);
+        leningrad.refill();
+        System.out.println("lebingrad = " + leningrad);
         maz.refill();
         System.out.println("maz = " + maz);
         maz.refill();
         System.out.println("maz = " + maz);
         hyundai.refill();
-        hyundai.Print();
+        hyundai.print();
         hyundai.setFuel("бензин");
-        hyundai.Print();
+        hyundai.print();
 
-        Herbivores gazelle = new Herbivores("Долли", 5, "саванна", 15, "трава");
-        Herbivores girafe = new Herbivores("Боби", 12, "саванна", 18, "листья");
-        Herbivores horse = new Herbivores("Вьюга", 3, "луг", 25, "трава");
+
+        Herbivore gazelle = new Herbivore("Долли", 5, "саванна", 15, "трава");
+        Herbivore girafe = new Herbivore("Боби", 12, "саванна", 18, "листья");
+        Herbivore horse = new Herbivore("Вьюга", 3, "луг", 25, "трава");
 
         System.out.println("gazelle = " + gazelle);
         System.out.println("girafe = " + girafe);
         System.out.println("horse = " + horse);
 
-        Predators hyena = new Predators("Зина", 6, "саванна", 20, "падаль");
-        Predators tiger = new Predators("Пламя", 8, "тайга", 22, "крупные животные");
-        Predators bear = new Predators("Балу", 18, "тайга", 30, "любая еда");
+        Predator hyena = new Predator("Зина", 6, "саванна", 20, "падаль");
+        Predator tiger = new Predator("Пламя", 8, "тайга", 22, "крупные животные");
+        Predator bear = new Predator("Балу", 18, "тайга", 30, "любая еда");
         System.out.println("hyena = " + hyena);
         System.out.println("tiger = " + tiger);
         System.out.println("bear = " + bear);
 
-        Amphibians frog = new Amphibians("Лола", 1, "болото");
-        Amphibians lreadFreshwater = new Amphibians("Ка", 2, "озеро");
+        Amphibian frog = new Amphibian("Лола", 1, "болото");
+        Amphibian lreadFreshwater = new Amphibian("Ка", 2, "озеро");
         System.out.println("frog = " + frog);
         System.out.println("lreadFreshwater = " + lreadFreshwater);
 
@@ -166,5 +165,13 @@ public class Main {
         Flying vd = new Flying("Сокол", 1, "лес", "летает");
         System.out.println("vd = " + vd);
         System.out.println(falcon.equals(vd));
+        hyundai.refill();
+        leningrad.refill();
+        maz.refill();
+        frog.eat();
+        frog.go();
+        frog.hunt();
+
+
     }
 }

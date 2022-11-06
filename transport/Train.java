@@ -2,21 +2,21 @@ package transport;
 
 public class Train extends Transport {
 
-    int priceTrip;
-    int timeTrip;
-    String nameDepartureStation;
-    String finalStop;
-    int numberOfWagons;
+    private int priceTrip;
+    private int timeTrip;
+    private String nameDepartureStation;
+    private String finalStop;
+    private int numberOfWagons;
 
 
     public Train(String brand, String model, int productionYear, String productionCountry, int maxMovementSpeed,
                  String nameDepartureStation, String finalStop, int priceTrip, int numberOfWagons, String fuel) {
-        super(brand, model, productionYear, productionCountry, fuel);
+        super(brand, model, productionYear, productionCountry, maxMovementSpeed,  fuel);
         setPriceTrip(priceTrip);
         setNameDepartureStation(nameDepartureStation);
         setFinalStop(finalStop);
         setNumberOfWagons(numberOfWagons);
-        this.maxMovementSpeed = maxMovementSpeed;
+
     }
 
     public int getPriceTrip() {
@@ -62,12 +62,9 @@ public class Train extends Transport {
 
     @Override
     public void refill() {
-        String a = "дизельное топливо";
-        if (getFuel().equalsIgnoreCase(a) != true) {
-            this.setFuel("дизельное топливо");
+        System.out.println("Заправьте дизельное топливо");
         }
 
-    }
 
 
     @Override

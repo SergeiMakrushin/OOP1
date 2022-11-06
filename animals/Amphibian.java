@@ -2,10 +2,10 @@ package animals;
 
 import java.util.Objects;
 
-public class Amphibians extends Animals {
-    protected final String livingEnvironment;
+public class Amphibian extends Animal {
+    private final String livingEnvironment;
 
-    public Amphibians(String nikname, int age, String livingEnvironment) {
+    public Amphibian(String nikname, int age, String livingEnvironment) {
         super(nikname, age);
         if (livingEnvironment == null || livingEnvironment.isBlank()) {
             this.livingEnvironment = "Неккоректное значение";
@@ -21,15 +21,23 @@ public class Amphibians extends Animals {
 
 
     public void eat() {
+        System.out.println("амфибии питаются насекомыми, рыбой и небольшими млекопитающими");
 
     }
 
     @Override
     public void go() {
+        System.out.println("умеют плавать и передвигаться по суше");
 
     }
 
-    public static void hunt() {
+    public void hunt() {
+        System.out.println("амфибии охотяться ночью, добыча должна двигаться");
+    }
+
+    @Override
+    public void sleep() {
+        System.out.println("спят днем, в укрытии");
     }
 
     @Override
@@ -43,7 +51,7 @@ public class Amphibians extends Animals {
     public boolean equals(Object o) {
 
         if (o == null || getClass() != o.getClass()) return false;
-        Amphibians that = (Amphibians) o;
+        Amphibian that = (Amphibian) o;
         return getNikname().equals(that.getNikname()) &&
                 this.getAge() == getAge() &&
                 livingEnvironment.equals(that.livingEnvironment);
